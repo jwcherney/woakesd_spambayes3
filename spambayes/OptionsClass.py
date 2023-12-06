@@ -61,7 +61,7 @@ other people:
 We are very generous in checking validity when multiple values are
 allowed and the check is a regex (rather than a tuple).  Any sequence
 that does not match the regex may be used to delimit the values.
-For example, if the regex was simply r"[\d]*" then these would all
+For example, if the regex was simply r"[\\d]*" then these would all
 be considered valid:
 "123a234" -> 123, 234
 "123abced234" -> 123, 234
@@ -418,16 +418,16 @@ class OptionsClass(object):
         optname = None
         out = TemporaryFile()
         if os.path.exists(filename):
-            f = file(filename, "r")
+            f = open(filename, "r")
         else:
             # doesn't exist, so create it - all the changed options will
             # be added to it
             if self.verbose:
                 print("Creating new configuration file", end=' ', file=sys.stderr)
                 print(filename, file=sys.stderr)
-            f = file(filename, "w")
+            f = open(filename, "w")
             f.close()
-            f = file(filename, "r")
+            f = open(filename, "r")
         written = []
         vi = ": " # default; uses the one from the file where possible
         while True:
@@ -489,7 +489,7 @@ class OptionsClass(object):
             # save a backup of the old file
             shutil.copyfile(filename, filename + ".bak")
         # copy the new file across
-        f = file(filename, "w")
+        f = open(filename, "w")
         out.seek(0)
         shutil.copyfileobj(out, f)
         out.close()

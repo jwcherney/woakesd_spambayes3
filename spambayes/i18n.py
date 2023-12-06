@@ -18,7 +18,7 @@ __credits__ = "Tony Meyer, All the SpamBayes folk."
 import os
 import sys
 from locale import getdefaultlocale
-from gettext import translation, NullTranslations
+from gettext import translation, NullTranslations, gettext
 # Note, we must not import spambayes.Options, or Outlook will not be happy.
 
 ## Set language environment for gettext and for dynamic load of dialogs.
@@ -185,13 +185,13 @@ def test():
     lm.set_language(lm.locale_default_lang())
     print(("\tCurrent Languages: ", lm.current_langs_codes))
     print(("\tlen(sys.path): ", len(sys.path)))
-    print(("\t", _("Help")))
+    print(("\t", gettext("Help")))
 
     print("TEST clear_language")
     lm.clear_language()
     print(("\tCurrent Languages: ", lm.current_langs_codes))
     print(("\tlen(sys.path): ", len(sys.path)))
-    print(("\t", _("Help")))
+    print(("\t", gettext("Help")))
 
     print("TEST set_language")
     for langcode in ["kk_KK", "z", "", "es", None, "es_AR"]:
@@ -200,7 +200,7 @@ def test():
         lm.set_language(langcode)
         print(("\tCurrent Languages: ", lm.current_langs_codes))
         print(("\tlen(sys.path): ", len(sys.path)))
-        print(("\t", _("Help")))
+        print(("\t", gettext("Help")))
 
     lm.clear_language()
 
@@ -211,7 +211,7 @@ def test():
         lm.add_language(langcode)
         print(("\tCurrent Languages: ", lm.current_langs_codes))
         print(("\tlen(sys.path): ", len(sys.path)))
-        print(("\t", _("Help")))
+        print(("\t", gettext("Help")))
 
 if __name__ == '__main__':
     test()

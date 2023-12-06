@@ -2,7 +2,8 @@
 
 from spambayes.Options import options
 import sys
-import dbm.ndbm
+#import dbm.ndbm
+import dbm.dumb
 import os
 
 class error(Exception):

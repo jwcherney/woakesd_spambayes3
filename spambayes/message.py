@@ -84,10 +84,10 @@ import warnings
 import pickle as pickle
 import traceback
 
-import email.Message
-import email.Parser
-import email.Header
-import email.Generator
+from email.message import EmailMessage
+import email.parser
+import email.header
+import email.generator
 
 from spambayes import storage
 from spambayes import dbmstorage
@@ -316,7 +316,7 @@ def database_type():
     return nm, typ
 
 
-class Message(object, email.message.EmailMessage):
+class Message(email.message.EmailMessage, object):
     '''An email.message.EmailMessage extended for SpamBayes'''
 
     def __init__(self, id=None):
@@ -538,7 +538,7 @@ class SBHeaderMessage(Message):
                 if (word == '*H*' or word == '*S*' \
                     or score <= hco or score >= sco):
                     if isinstance(word, str):
-                        word = email.Header.Header(word,
+                        word = email.header.Header(word,
                                                    charset='utf-8').encode()
                     try:
                         evd.append("%r: %.2f" % (word, score))

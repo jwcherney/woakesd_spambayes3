@@ -73,7 +73,7 @@ import cgi
 import mailbox
 import types
 import io
-from email.Iterators import typed_subpart_iterator
+from email.iterators import typed_subpart_iterator
 from textwrap import wrap
 
 from spambayes import oe_mailbox
@@ -1109,11 +1109,11 @@ class UserInterface(BaseUserInterface):
         import mimetypes
 
         from email import Encoders
-        from email.MIMEBase import MIMEBase
-        from email.MIMEAudio import MIMEAudio
-        from email.MIMEMultipart import MIMEMultipart
-        from email.MIMEImage import MIMEImage
-        from email.MIMEText import MIMEText
+        from email.mime.base import MIMEBase
+        from email.mime.audio import MIMEAudio
+        from email.mime.multipart import MIMEMultipart
+        from email.mime.image import MIMEImage
+        from email.mime.text import MIMEText
 
         if not self._verifyEnteredDetails(from_addr, subject, message):
             self._writePreamble(_("Error"), ("help", _("Help")))

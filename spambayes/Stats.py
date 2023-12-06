@@ -39,7 +39,7 @@ from spambayes.message import STATS_START_KEY, STATS_STORAGE_KEY
 from spambayes.message import Message
 
 try:
-    _
+    _ # pyright: ignore [reportUndefinedVariable]
 except NameError:
     _ = lambda arg: arg
 

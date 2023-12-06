@@ -14,7 +14,7 @@ import sys
 import re
 
 try:
-    _
+    _ # pyright: ignore [reportUndefinedVariable]
 except NameError:
     _ = lambda arg: arg
 
@@ -218,7 +218,9 @@ class SBVersion:
         if isinstance(other, str):
             other = SBVersion(other)
 
-        return cmp(self.version_info, other.version_info)
+        a = self.version_info
+        b = other.version_info
+        return (a > b) - (a < b) 
 
     def get_long_version(self, app_name = None):
         if app_name is None:

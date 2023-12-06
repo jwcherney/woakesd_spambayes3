@@ -58,7 +58,7 @@ class _FileCorpusBaseTest(unittest.TestCase):
     def _setUpDirectory(self, dirname):
         try:
             os.mkdir(dirname)
-        except OSError, e:
+        except OSError as e:
             if e[0] != errno.EEXIST:
                 raise
 
@@ -71,7 +71,7 @@ class _FileCorpusBaseTest(unittest.TestCase):
     def _tearDownDirectory(self, dirname):
         try:
             flist = os.listdir(dirname)
-        except OSError, e:
+        except OSError as e:
             if e.errno != 3:
                 raise
         else:
@@ -80,7 +80,7 @@ class _FileCorpusBaseTest(unittest.TestCase):
                 os.unlink(fn)
         try:
             os.rmdir(dirname)
-        except OSError, e:
+        except OSError as e:
             if e.errno != 2:
                 raise
 
@@ -91,12 +91,12 @@ class _FileCorpusBaseTest(unittest.TestCase):
 
         try:
             os.unlink('fctestmisc.bayes')
-        except OSError, e:
+        except OSError as e:
             if e.errno != 2:
                 raise
         try:
             os.unlink('fctestclass.bayes')
-        except OSError, e:
+        except OSError as e:
             if e.errno != 2:
                 raise
 
@@ -288,7 +288,7 @@ class FileCorpusTest(_FileCorpusBaseTest):
         self.corpus.addMessage(msg)
         self.assertEqual(msg.directory, self.directory)
         fn = os.path.join(self.directory, "9")
-        f = open(fn, "rU")
+        f = open(fn, "r")
         content = f.read()
         f.close()
         self.assertEqual(content, good1)

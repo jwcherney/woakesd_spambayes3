@@ -117,7 +117,7 @@ def getmbox(name):
 ':(?P<user>[^@:]+):(?P<pwd>[^@]+)@(?P<server>[^:]+(:[0-9]+)?):(?P<name>[^:]+)'
         ).match(name).groupdict()
 
-        from scripts.sb_imapfilter import IMAPSession, IMAPFolder
+        from .scripts.sb_imapfilter import IMAPSession, IMAPFolder
         from spambayes import Stats, message
         from spambayes.Options import options
 
